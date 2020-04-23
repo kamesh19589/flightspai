@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<flow name="indigoFlightsFlow" doc:id="14d33f9c-4a48-45ca-8d7e-635b8c91f0a0" >
+		<logger level="INFO" doc:name="Logger" doc:id="cf3e9ecc-75de-44d2-a2fe-87ae8b3facb8" message="get:\indigoFlights:flightsapi-config" />
+		<http:request method="GET" doc:name="Request" doc:id="0f7195aa-730d-41a2-8b88-a4f73f27afe4" config-ref="HTTP_Request_configuration" path="/api/getFlights" >
+			<http:query-params ><![CDATA[#[output application/java
+---
+{
+	from : attributes.queryParams.from,
+	to : attributes.queryParams.to,
+	depatureDate : attributes.queryParams.doj
+}]]]></http:query-params>
+		</http:request>
+		<logger level="INFO" doc:name="Logger" doc:id="9d01264d-db44-40b2-a041-468317f0da06" />
+	</flow>
+</mule>

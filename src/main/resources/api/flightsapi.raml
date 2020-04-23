@@ -1,0 +1,36 @@
+#%RAML 1.0
+title: flights API
+baseUri: http://localhost:8081/api
+  
+/indigoFlights: 
+  get: 
+    queryParameters: 
+      from:
+      to:
+      doj:
+    responses: 
+      200:
+        body: 
+          application/json: 
+
+/airIndiaFlights: 
+  get: 
+    queryParameters: 
+      from:
+      to:
+      doj:
+    responses: 
+      200:
+        body: 
+          application/json: 
+/createAccount:
+  post: 
+    body: 
+      application/json: 
+    responses: 
+       200:
+        body: 
+          application/json:    
+      
+
+
